@@ -1,0 +1,10 @@
+{
+  "name": "fsabbl-website",
+  "private": true,
+  "scripts": {
+    "build": "bash scripts/build-encrypted-site.sh"
+  },
+  "devDependencies": {
+    "staticrypt": "3.5.4"
+  }
+}

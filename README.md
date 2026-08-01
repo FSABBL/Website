@@ -6,6 +6,38 @@ The official website for the Fulton Science Academy Biomedical & Bioinformatics 
 
 Open [`index.html`](./index.html) in a web browser or visit the deployed GitHub Pages site when available.
 
+## Password-protected deployment
+
+The GitHub Pages deployment embeds local styles and images into each page, then encrypts every HTML page with [StatiCrypt](https://github.com/robinmoisson/staticrypt). Visitors must enter the shared password before the browser decrypts and displays a page. The password is never committed to this repository, and local images are not deployed as separate public files.
+
+### GitHub setup
+
+1. Open the repository's **Settings → Secrets and variables → Actions**.
+2. Create a repository secret named `STATICRYPT_PASSWORD` containing a long, unique password (at least 16 characters).
+3. Open **Settings → Pages** and select **GitHub Actions** as the source.
+4. Run the **Deploy password-protected site** workflow, or push a commit to `main`.
+5. Give authorized visitors the password through a separate, private channel.
+
+To change or revoke the shared password, replace the `STATICRYPT_PASSWORD` secret and rerun the workflow. Visitors can select “Remember me” for seven days.
+
+### Local encrypted build
+
+After installing dependencies, provide the password as an environment variable and run the build:
+
+```bash
+npm install
+STATICRYPT_PASSWORD='use-a-long-unique-password' npm run build
+```
+
+The encrypted site is written to `dist/`, which is excluded from Git.
+
+### Why StatiCrypt
+
+StatiCrypt was selected instead of a hidden hashed directory or PageCrypt. A hidden directory leaves the original files unencrypted, while StatiCrypt encrypts their contents. PageCrypt provides similar client-side encryption, but StatiCrypt has a maintained npm CLI, supports several pages in one build, offers a shared “Remember me” flow, and currently uses a substantially higher PBKDF2 work factor. Those features make it a better fit for this multi-page GitHub Pages deployment.
+
+> [!IMPORTANT]
+> Client-side encryption protects the deployed HTML only. It is not user authentication, it cannot identify individual visitors, and anyone who knows the shared password can pass it on. The repository must be private if its unencrypted source should also be confidential. Do not use this design for highly sensitive personal, medical, financial, or regulated information.
+
 ## Creator credit and required attribution
 
 This website was designed and developed by **[kx11z](https://github.com/kx11z)**.
@@ -49,4 +81,3 @@ For permission to reuse the website without the attribution above, contact the r
 ## Copyright
 
 Copyright © 2026 kx11z. All rights reserved except for the limited, attribution-required permission stated above.
-
