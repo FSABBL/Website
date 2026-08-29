@@ -2,6 +2,7 @@
   "name": "fsabbl-website",
   "private": true,
   "scripts": {
+    "dev": "node scripts/dev-server.mjs",
     "build": "bash scripts/build-encrypted-site.sh"
   },
   "devDependencies": {
