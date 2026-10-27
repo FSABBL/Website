@@ -379,6 +379,8 @@ main {
 .role-grid strong { color: var(--wine-dark); }
 .role-grid .role-profile { display: grid; grid-template-columns: 105px 1fr; gap: 15px; }
 .role-profile img { width: 105px; height: 105px; object-fit: cover; border-radius: 5px; border: 1px solid var(--line); }
+.role-grid .charlie-profile { grid-column: 1 / -1; grid-template-columns: 180px 1fr; padding: 22px; }
+.charlie-profile img { width: 180px; height: auto; object-fit: contain; display: block; }
 .role-profile p { margin: 8px 0 0; color: var(--muted); font-size: .86rem; line-height: 1.5; }
 .support-panel h3, .program-card h3 { margin: 3px 0 15px; color: var(--wine-dark); font-family: Georgia, serif; }
 .support-row { display: grid; grid-template-columns: 1fr 1.5fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
@@ -526,6 +528,8 @@ main {
 
   .role-grid .role-profile { grid-template-columns: 88px 1fr; }
   .role-profile img { width: 88px; height: 88px; }
+  .role-grid .charlie-profile { grid-template-columns: 140px 1fr; }
+  .charlie-profile img { width: 140px; height: auto; }
 
   .student-card {
     display: block;
@@ -542,7 +546,7 @@ main {
   min-height: calc(100vh - 130px);
   background:
     linear-gradient(rgba(63, 7, 18, 0.68), rgba(63, 7, 18, 0.74)),
-    url("images/iStock-949946968.jpg");
+    url("images/Lab4.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
